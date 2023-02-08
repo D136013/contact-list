@@ -14,6 +14,24 @@ function agregarContacto(id, nombres, apellidos, telefono, ciudad, direccion){
     listaContactos.push(contacto);
 }
 
+function actualizarContacto(id, nuevoNombre, nuevoApellido, nuevoTelefono, nuevaCiudad, nuevaDireccion){
+    for (let i = 0; i < listaContactos.length; i++) {
+        if (listaContactos[i].id === id) {
+            listaContactos[i] = {
+                id,
+                nombres: nuevoNombre,
+                apellidos: nuevoApellido,
+                telefono: nuevoTelefono,
+                ubicaciones: {
+                    ciudad: nuevaCiudad,
+                    direccion: nuevaDireccion
+                }
+            }
+        }
+    }
+}
+
+
 function borrarContacto(id){
     listaContactos = listaContactos.filter((persona) => persona.id !== id);
 }
@@ -26,7 +44,5 @@ function mostrarContacto(){
 agregarContacto(1, "diego jose", "Florez Gelves", "963", "zipaquira", "villa maria");
 agregarContacto(2, "carlos julian", "lara mora", "258", "zipaquira", "villa maria");
 console.log(listaContactos)
-borrarContacto()
-borrarContacto()
-
+actualizarContacto(1, "diego", "Florez", "963", "bogota", "villas")
 console.log(listaContactos)
